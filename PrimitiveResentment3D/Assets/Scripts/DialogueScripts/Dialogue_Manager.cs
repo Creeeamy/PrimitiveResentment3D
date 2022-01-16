@@ -29,6 +29,8 @@ public class Dialogue_Manager : MonoBehaviour
     private int convoIndex;
     private List<string> npcNameText;
     private int nameIndex;
+    private List<Sprite> portraitList;
+    private int portraitIndex;
 
     private static Dialogue_Manager dm;
     public InputManager inputManager;
@@ -70,25 +72,27 @@ public class Dialogue_Manager : MonoBehaviour
     {
        
 
-        SetPortrait(_convo);
+        //SetPortrait(_convo);
         
         conversation = new List<string>(_convo.myConversation);
         npcNameText = new List<string>(_convo.nameList);
+        portraitList = new List<Sprite>(_convo.portraitList);
         dialoguePanel.SetActive(true);
         nameIndex = 0;
         convoIndex = 0;
+        portraitIndex = 0;
         ShowText();
         inputManager.SwitchMapToDialogue();
     }
 
     //Sets default image in dialogue box to a portrait
-    public void SetPortrait(SO_Convo _convo)
-    {
-        //CharPortrait.GetComponent<Image>().sprite = _convo.portrait;
+    //public void SetPortrait(SO_Convo _convo)
+    //{
+    //    //CharPortrait.GetComponent<Image>().sprite = _convo.portrait;
 
-        CharPortrait = CharacterPortrait.GetComponent<Image>();
-        CharPortrait.sprite = _convo.portrait;
-    }
+    //    CharPortrait = CharacterPortrait.GetComponent<Image>();
+    //    CharPortrait.sprite = _convo.portrait;
+    //}
 
 
     //Stops conversations, and reverts back to normal gameplay
@@ -104,6 +108,8 @@ public class Dialogue_Manager : MonoBehaviour
     //Sets dialogue box text to display text. Called in startDialogue function.
     private void ShowText()
     {
+        CharPortrait = CharacterPortrait.GetComponent<Image>();
+        CharPortrait.sprite = portraitList[portraitIndex];
         npcName.text = npcNameText[nameIndex];
         dialogueText.text = conversation[convoIndex];
     }
@@ -117,6 +123,7 @@ public class Dialogue_Manager : MonoBehaviour
         {
             nameIndex += 1;
             convoIndex += 1;
+            portraitIndex += 1;
             ShowText();
         }
         else
