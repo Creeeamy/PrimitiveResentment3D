@@ -80,7 +80,12 @@ public class InputManager : MonoBehaviour
     private void Start()
     {
         dm = Dialogue_Manager.dmInstance;
-        playerControls.Dialogue.NextText.performed += _ => CycleText();
+
+        if(playerControls.Dialogue.enabled == true)
+        {
+          playerControls.Dialogue.NextText.performed += _ => CycleText();
+        }
+        
     }
 
     void CycleText()

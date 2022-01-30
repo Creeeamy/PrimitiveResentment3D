@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour
     //InputEvents
     private PlayerInput playerInput;
 
+    //Inventory
+    public InventoryObject inventory;
+
 
     private CharacterController controller;
     [SerializeField]

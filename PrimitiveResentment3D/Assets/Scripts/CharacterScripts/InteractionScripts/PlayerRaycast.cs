@@ -15,6 +15,10 @@ public class PlayerRaycast : MonoBehaviour
     private ScriptableObject convoToFeed;
     public static PlayerRaycast _playerRaycast;
     public bool canInteract;
+    public static InventoryManager inventoryManager;
+
+    [SerializeField]
+    private InventoryObject _inventory;
 
 
     public static PlayerRaycast raycastInstance
@@ -31,6 +35,8 @@ public class PlayerRaycast : MonoBehaviour
         canInteract = true;
         interact.Player.Interact.performed += _ => DetermineInteraction();
         dialogueManager = FindObjectOfType<Dialogue_Manager>();
+        inventoryManager = InventoryManager.instance;
+        _inventory = inventoryManager.inventory;
     }
 
     private void Awake()
@@ -70,6 +76,18 @@ public class PlayerRaycast : MonoBehaviour
                 canInteract = false;
                 //interact.Player.Disable();
                 dialogueManager.Start_Dialogue(hitObject.collider.GetComponent<SO_Holder>().heldSO);
+            }
+
+
+            if (hitObject.collider.GetComponent<Item>())
+            {
+                Debug.Log("I am valid");
+                var item = hitObject.collider.GetComponent<Item>().heldItem;
+
+                //_inventory.AddItem(hitObject.collider.GetComponent<Item>().heldItem, 1);
+
+                _inventory.AddItem(item, 1);
+                Destroy(hitObject.collider.gameObject);
             }
 
 
