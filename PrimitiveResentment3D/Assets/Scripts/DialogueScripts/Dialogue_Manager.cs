@@ -31,6 +31,9 @@ public class Dialogue_Manager : MonoBehaviour
     private int nameIndex;
     private List<Sprite> portraitList;
     private int portraitIndex;
+    private List<AudioClip> audioList;
+    private int audioIndex;
+    private AudioSource audioSource;
 
     private static Dialogue_Manager dm;
     public InputManager inputManager;
@@ -39,6 +42,7 @@ public class Dialogue_Manager : MonoBehaviour
 
     void Start()
     {
+        audioSource = GameObject.Find("Main Camera").GetComponent<AudioSource>();
         dialoguePanel.SetActive(false);
         inputManager = InputManager.Instance;
         playerRaycast = PlayerRaycast.raycastInstance;
@@ -77,10 +81,12 @@ public class Dialogue_Manager : MonoBehaviour
         conversation = new List<string>(_convo.myConversation);
         npcNameText = new List<string>(_convo.nameList);
         portraitList = new List<Sprite>(_convo.portraitList);
+        audioList = new List<AudioClip>(_convo.audioList);
         dialoguePanel.SetActive(true);
         nameIndex = 0;
         convoIndex = 0;
         portraitIndex = 0;
+        audioIndex = 0;
         ShowText();
         inputManager.SwitchMapToDialogue();
     }
@@ -112,6 +118,8 @@ public class Dialogue_Manager : MonoBehaviour
         CharPortrait.sprite = portraitList[portraitIndex];
         npcName.text = npcNameText[nameIndex];
         dialogueText.text = conversation[convoIndex];
+        audioSource.clip = audioList[audioIndex];
+        audioSource.Play();
     }
 
 
@@ -124,6 +132,7 @@ public class Dialogue_Manager : MonoBehaviour
             nameIndex += 1;
             convoIndex += 1;
             portraitIndex += 1;
+            audioIndex += 1;
             ShowText();
         }
         else

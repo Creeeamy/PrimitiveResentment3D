@@ -12,6 +12,7 @@ public class SO_Convo : ScriptableObject
     //public string npcName;
     public Sprite portrait;
     public List<Sprite> portraitList = new List<Sprite>();
+    public List<AudioClip> audioList = new List<AudioClip>();
     [TextArea(10, 15)]
     public List<string> myConversation = new List<string>();
     public List<string> nameList = new List<string>();
