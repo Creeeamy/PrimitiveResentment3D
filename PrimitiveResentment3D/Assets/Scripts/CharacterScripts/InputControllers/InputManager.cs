@@ -85,6 +85,9 @@ public class InputManager : MonoBehaviour
         {
           playerControls.Dialogue.NextText.performed += _ => CycleText();
         }
+
+
+        SwitchMapToPlayer();
         
     }
 

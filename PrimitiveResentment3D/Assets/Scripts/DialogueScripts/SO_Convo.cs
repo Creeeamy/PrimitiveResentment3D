@@ -9,6 +9,9 @@ public class SO_Convo : ScriptableObject
 
     //Scriptable object, called by Dialogue manager.
 
+    public int listLength;
+
+
     //public string npcName;
     public Sprite portrait;
     public List<Sprite> portraitList = new List<Sprite>();

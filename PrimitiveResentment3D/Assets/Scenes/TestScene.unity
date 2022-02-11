@@ -2348,11 +2348,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76e68df712611a04884dec0956cf1743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Blankshot: {fileID: 8300000, guid: 8502ae471db6c9b44a6ed5dad4a23221, type: 3}
   dialoguePanel: {fileID: 1559107833}
-  npcName: {fileID: 2111862955}
   dialogueText: {fileID: 1559107832}
+  npcName: {fileID: 2111862955}
+  storedName: {fileID: 0}
   CharPortrait: {fileID: 1559107831}
   CharacterPortrait: {fileID: 1559107830}
+  storedImage: {fileID: 0}
   enable: 0
   objectToEnable: {fileID: 0}
   linkedEnableItem: {fileID: 0}

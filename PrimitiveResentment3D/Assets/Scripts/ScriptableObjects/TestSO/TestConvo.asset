@@ -12,16 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6658c038da7daed4e8711ac7350558ed, type: 3}
   m_Name: TestConvo
   m_EditorClassIdentifier: 
+  listLength: 4
   portrait: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   portraitList:
   - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   - {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   audioList:
   - {fileID: 8300000, guid: d7d8f955862599d468b9e687260dd317, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 8c861535351ffed4ca9f414260678dd8, type: 3}
   - {fileID: 8300000, guid: 8c861535351ffed4ca9f414260678dd8, type: 3}
   myConversation:
-  - This is working
-  - And is improved
+  - Dialogue 1
+  - Diolgue 2, portrait is null, sound is null
+  - Dialogue 3, sound effect, portrait changed, name is null
+  - Dialogue 4, all set
   nameList:
-  - Test
-  - Success!
+  - Dialogue 1
+  - Dialogue 2
+  - 
+  - Dialogue 4

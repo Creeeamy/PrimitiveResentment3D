@@ -7,13 +7,25 @@ using TMPro;
 
 public class Dialogue_Manager : MonoBehaviour
 {
+    [Header("Blank Sound File")]
+    public AudioClip Blankshot;
+
     [Header("Dialogue Variables")]
     public GameObject dialoguePanel;
-    //public GameObject buttonBlocker;
-    public TextMeshProUGUI npcName;
     public TextMeshProUGUI dialogueText;
+    //public GameObject buttonBlocker;
+
+        [Header("Name Variables")]
+    public TextMeshProUGUI npcName;
+    [SerializeField]
+    private TextMeshProUGUI storedName;
+    
+
+    [Header("Portrait Variables")]
     public Image CharPortrait;
     public GameObject CharacterPortrait;
+    [SerializeField]
+    private Image storedImage;
     
     //    [Header("Deleting Variables")]
     //public bool delete;
@@ -115,9 +127,42 @@ public class Dialogue_Manager : MonoBehaviour
     private void ShowText()
     {
         CharPortrait = CharacterPortrait.GetComponent<Image>();
-        CharPortrait.sprite = portraitList[portraitIndex];
-        npcName.text = npcNameText[nameIndex];
+
+        if(portraitList[portraitIndex] == null)
+        {
+            CharPortrait = storedImage;
+        }
+        else if(portraitList[portraitIndex] != null)
+        {
+            CharPortrait.sprite = portraitList[portraitIndex];
+            storedImage = CharPortrait;
+        }
+
+        //npcName.text = npcNameText[nameIndex];
+
+        if(npcNameText[nameIndex] == "")
+        {
+            npcName = storedName;
+        } 
+        else if(npcNameText[nameIndex] != "")
+        {
+            npcName.text = npcNameText[nameIndex];
+            storedName = npcName;
+        }
+
+        //CharPortrait.sprite = portraitList[portraitIndex];
+
         dialogueText.text = conversation[convoIndex];
+
+        if(audioList[audioIndex] == null)
+        {
+            audioSource.clip = Blankshot;
+        }
+        else if(audioList[audioIndex] != null)
+        {
+            audioSource.clip = audioList[audioIndex];
+        }
+
         audioSource.clip = audioList[audioIndex];
         audioSource.Play();
     }
