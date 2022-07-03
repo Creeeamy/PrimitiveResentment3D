@@ -30,4 +30,9 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    private void OnApplicationQuit()
+    {
+        inventory.itemContainer.Clear();
+    }
+
 }

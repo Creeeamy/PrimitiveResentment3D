@@ -43,8 +43,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
         inputManager = InputManager.Instance;
         controller = GetComponent<CharacterController>();
         camTransform = Camera.main.transform;
