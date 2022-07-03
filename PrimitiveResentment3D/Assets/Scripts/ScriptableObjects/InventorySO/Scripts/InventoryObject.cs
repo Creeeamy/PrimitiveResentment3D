@@ -21,10 +21,10 @@ public class InventoryObject : ScriptableObject
                 hasItem = true;
                 break;
             }
-            if (!hasItem)
-            {
-                itemContainer.Add(new InventorySlot(_item, _amount));
-            }
+        }
+        if (!hasItem)
+        {
+            itemContainer.Add(new InventorySlot(_item, _amount));
         }
     }
 
